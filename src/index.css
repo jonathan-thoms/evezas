@@ -1,0 +1,347 @@
+@import "tailwindcss";
+
+/* ── Design Tokens ── */
+@theme {
+  --color-navy-50: #eef2f7;
+  --color-navy-100: #d5dfe9;
+  --color-navy-200: #abbdd3;
+  --color-navy-300: #809abd;
+  --color-navy-400: #5678a7;
+  --color-navy-500: #3a5a8c;
+  --color-navy-600: #2d4770;
+  --color-navy-700: #1e3354;
+  --color-navy-800: #132340;
+  --color-navy-900: #0b1929;
+  --color-navy-950: #060e18;
+
+  --color-accent-400: #4a90d9;
+  --color-accent-500: #2e74c0;
+  --color-accent-600: #1f5a9e;
+
+  --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+}
+
+/* ── Global Resets ── */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  font-family: var(--font-sans);
+  color: #0b1929;
+  background-color: #ffffff;
+  line-height: 1.6;
+}
+
+/* ═══════════════════════════════════════
+   BUTTON SYSTEM — Premium hover effects
+   ═══════════════════════════════════════ */
+
+/* Hero Primary — White pill with glow */
+.btn-primary {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 1rem 2.25rem;
+  background-color: #ffffff;
+  color: #132340;
+  font-weight: 600;
+  font-size: 0.95rem;
+  border-radius: 0.75rem;
+  border: none;
+  text-decoration: none;
+  box-shadow: 0 8px 30px rgba(0,0,0,0.12);
+  transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  cursor: pointer;
+  overflow: hidden;
+}
+.btn-primary::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(74,144,217,0.08), rgba(74,144,217,0));
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  border-radius: inherit;
+}
+.btn-primary:hover {
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: 0 16px 48px rgba(0,0,0,0.18), 0 0 0 1px rgba(74,144,217,0.15);
+}
+.btn-primary:hover::before {
+  opacity: 1;
+}
+.btn-primary:active {
+  transform: translateY(-1px) scale(0.99);
+  transition-duration: 0.1s;
+}
+.btn-primary svg {
+  transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+.btn-primary:hover svg {
+  transform: translateX(4px);
+}
+
+/* Hero Secondary — Ghost button with border sweep */
+.btn-secondary {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 1rem 2.25rem;
+  background-color: transparent;
+  color: #ffffff;
+  font-weight: 500;
+  font-size: 0.95rem;
+  border-radius: 0.75rem;
+  border: 2px solid rgba(255,255,255,0.2);
+  text-decoration: none;
+  transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  cursor: pointer;
+  overflow: hidden;
+}
+.btn-secondary::before {
+  content: '';
+  position: absolute;
+  top: 0; left: -100%;
+  width: 100%; height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.06), transparent);
+  transition: left 0.5s ease;
+}
+.btn-secondary:hover {
+  background-color: rgba(255,255,255,0.08);
+  border-color: rgba(255,255,255,0.45);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 30px rgba(0,0,0,0.1);
+}
+.btn-secondary:hover::before {
+  left: 100%;
+}
+.btn-secondary:active {
+  transform: translateY(-1px);
+  transition-duration: 0.1s;
+}
+
+/* Capabilities CTA — Navy with shine */
+.btn-navy {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 1rem 2.25rem;
+  background-color: #132340;
+  color: #ffffff;
+  font-weight: 600;
+  font-size: 0.95rem;
+  border-radius: 0.75rem;
+  border: none;
+  text-decoration: none;
+  box-shadow: 0 8px 30px rgba(11,25,41,0.25);
+  transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  cursor: pointer;
+  overflow: hidden;
+}
+.btn-navy::before {
+  content: '';
+  position: absolute;
+  top: 0; left: -100%;
+  width: 100%; height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.08), transparent);
+  transition: left 0.6s ease;
+}
+.btn-navy:hover {
+  background-color: #0b1929;
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: 0 14px 44px rgba(11,25,41,0.35);
+}
+.btn-navy:hover::before {
+  left: 100%;
+}
+.btn-navy:active {
+  transform: translateY(-1px) scale(0.99);
+  transition-duration: 0.1s;
+}
+.btn-navy svg {
+  transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+.btn-navy:hover svg {
+  transform: translateX(4px);
+}
+
+/* Nav CTA — Shared base */
+.btn-nav {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  padding: 0.625rem 1.5rem;
+  font-weight: 600;
+  font-size: 0.875rem;
+  border-radius: 0.5rem;
+  text-decoration: none;
+  transition: all 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  border: none;
+  cursor: pointer;
+  overflow: hidden;
+}
+.btn-nav--solid {
+  background-color: #1e3354;
+  color: #ffffff;
+  box-shadow: 0 4px 15px rgba(11,25,41,0.2);
+}
+.btn-nav--solid:hover {
+  background-color: #132340;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(11,25,41,0.3);
+}
+.btn-nav--solid:active {
+  transform: translateY(0);
+  transition-duration: 0.1s;
+}
+.btn-nav--light {
+  background-color: #ffffff;
+  color: #132340;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+.btn-nav--light:hover {
+  background-color: #f0f4f8;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+}
+.btn-nav--light:active {
+  transform: translateY(0);
+  transition-duration: 0.1s;
+}
+
+/* ═══════════════════════════════════════
+   SERVICE CARD — Icon + Text layout
+   ═══════════════════════════════════════ */
+.service-card {
+  position: relative;
+  background: #ffffff;
+  border-radius: 1rem;
+  padding: 1.75rem;
+  border: 1px solid #e8ecf1;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+  transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+.service-card:hover {
+  border-color: #d0d7e1;
+  box-shadow: 0 12px 36px rgba(11,25,41,0.08);
+  transform: translateY(-4px);
+}
+.service-card .card-icon {
+  width: 2.75rem;
+  height: 2.75rem;
+  border-radius: 0.75rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1rem;
+  transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.35s ease;
+}
+.service-card:hover .card-icon {
+  transform: scale(1.08) translateY(-2px);
+  box-shadow: 0 6px 16px rgba(0,0,0,0.12);
+}
+.service-card h4 {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #0b1929;
+  line-height: 1.4;
+  margin-bottom: 0.5rem;
+  transition: color 0.3s;
+}
+.service-card:hover h4 {
+  color: #1e3354;
+}
+.service-card p {
+  font-size: 0.85rem;
+  color: #8e9aaa;
+  line-height: 1.65;
+}
+.service-card:hover p {
+  color: #6b7a8d;
+}
+
+/* ── Category Header Icon ── */
+.category-icon {
+  flex-shrink: 0;
+  width: 3rem;
+  height: 3rem;
+  border-radius: 0.75rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+.category-icon--strategy {
+  background: linear-gradient(135deg, #2d4770, #132340);
+}
+.category-icon--technology {
+  background: linear-gradient(135deg, #2e74c0, #1f5a9e);
+}
+.category-icon--operations {
+  background: linear-gradient(135deg, #6b7a8d, #556374);
+}
+.category-icon--industries {
+  background: linear-gradient(135deg, #3a5a8c, #1f5a9e);
+}
+
+/* ── Card Icon Color Variants ── */
+.card-icon--navy {
+  background: linear-gradient(135deg, #eef2f7, #d5dfe9);
+  color: #1e3354;
+}
+.card-icon--blue {
+  background: linear-gradient(135deg, #e8f0fb, #cde0f6);
+  color: #1f5a9e;
+}
+.card-icon--slate {
+  background: linear-gradient(135deg, #edf0f3, #d9dee4);
+  color: #556374;
+}
+.card-icon--teal {
+  background: linear-gradient(135deg, #e6f4f1, #c8e6e0);
+  color: #1a6b5a;
+}
+
+/* ── Animations ── */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 0.7s ease-out forwards;
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.5s ease-out forwards;
+}
+
+/* ── Selection ── */
+::selection {
+  background-color: #abbdd3;
+  color: #0b1929;
+}
