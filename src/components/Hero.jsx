@@ -15,7 +15,7 @@ export default function Hero() {
       <div
         style={{
           position: 'absolute', inset: 0,
-          backgroundImage: 'url(/hero-bg.jpg)',
+          backgroundImage: `url(${import.meta.env.BASE_URL}hero-bg.jpg)`,
           backgroundSize: 'cover',
           backgroundPosition: 'center',
           backgroundRepeat: 'no-repeat',

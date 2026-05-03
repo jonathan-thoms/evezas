@@ -38,7 +38,7 @@ export default function Footer() {
           {/* Brand Column */}
           <div>
             <img
-              src="/logo.png"
+              src={`${import.meta.env.BASE_URL}logo.png`}
               alt="Evezas"
               style={{ height: '44px', width: 'auto', marginBottom: '1.5rem', filter: 'brightness(2)' }}
             />

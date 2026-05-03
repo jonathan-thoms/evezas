@@ -40,7 +40,7 @@ export default function Navbar() {
           {/* Logo */}
           <a href="#home" id="nav-logo" style={{ display: 'flex', alignItems: 'center', textDecoration: 'none' }}>
             <img
-              src="/logo.png"
+              src={`${import.meta.env.BASE_URL}logo.png`}
               alt="Evezas"
               style={{ height: '96px', width: 'auto', objectFit: 'contain' }}
             />
