@@ -26,18 +26,6 @@ const iconColors = {
 
 const categories = [
   {
-    title: 'Strategy & Advisory',
-    subtitle: 'Board-level insight and strategic direction for enterprise growth.',
-    iconClass: 'category-icon category-icon--strategy',
-    icon: (<svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}><path strokeLinecap="round" strokeLinejoin="round" d="M3.75 3v11.25A2.25 2.25 0 006 16.5h2.25M3.75 3h-1.5m1.5 0h16.5m0 0h1.5m-1.5 0v11.25A2.25 2.25 0 0118 16.5h-2.25m-7.5 0h7.5m-7.5 0l-1 3m8.5-3l1 3m0 0l.5 1.5m-.5-1.5h-9.5m0 0l-.5 1.5m.75-9l3-3 2.148 2.148A12.061 12.061 0 0116.5 7.605" /></svg>),
-    services: [
-      { name: 'Strategy & Management Advisory', desc: 'Board-level strategic planning, market entry, and organizational transformation roadmaps.' },
-      { name: 'ESG & Sustainability Advisory', desc: 'Embed sustainable practices into corporate DNA with measurable ESG frameworks.' },
-      { name: 'Financial & Investment Services', desc: 'Capital strategy, M&A advisory, and financial modeling for growth-stage enterprises.' },
-      { name: 'Investment & New Business Venture Advisory & Partnerships', desc: 'Identify, evaluate, and structure strategic partnerships and venture opportunities.' },
-    ],
-  },
-  {
     title: 'Technology & Innovation',
     subtitle: 'Cutting-edge solutions powering digital-first enterprises.',
     iconClass: 'category-icon category-icon--technology',
@@ -48,6 +36,18 @@ const categories = [
       { name: 'AI, Automation & Data Enablement', desc: 'Machine learning pipelines, intelligent automation, and enterprise data strategy.' },
       { name: 'Cybersecurity & Risk Management', desc: 'Threat assessment, compliance frameworks, and zero-trust security architecture.' },
       { name: 'Emerging & Niche Technology Services', desc: 'Blockchain, IoT ecosystems, Fractional CXO services, and frontier tech adoption.' },
+    ],
+  },
+  {
+    title: 'Strategy & Advisory',
+    subtitle: 'Board-level insight and strategic direction for enterprise growth.',
+    iconClass: 'category-icon category-icon--strategy',
+    icon: (<svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}><path strokeLinecap="round" strokeLinejoin="round" d="M3.75 3v11.25A2.25 2.25 0 006 16.5h2.25M3.75 3h-1.5m1.5 0h16.5m0 0h1.5m-1.5 0v11.25A2.25 2.25 0 0118 16.5h-2.25m-7.5 0h7.5m-7.5 0l-1 3m8.5-3l1 3m0 0l.5 1.5m-.5-1.5h-9.5m0 0l-.5 1.5m.75-9l3-3 2.148 2.148A12.061 12.061 0 0116.5 7.605" /></svg>),
+    services: [
+      { name: 'Strategy & Management Advisory', desc: 'Board-level strategic planning, market entry, and organizational transformation roadmaps.' },
+      { name: 'ESG & Sustainability Advisory', desc: 'Embed sustainable practices into corporate DNA with measurable ESG frameworks.' },
+      { name: 'Financial & Investment Services', desc: 'Capital strategy, M&A advisory, and financial modeling for growth-stage enterprises.' },
+      { name: 'Investment & New Business Venture Advisory & Partnerships', desc: 'Identify, evaluate, and structure strategic partnerships and venture opportunities.' },
     ],
   },
   {
@@ -73,12 +73,12 @@ const categories = [
   },
 ];
 
-/* Band backgrounds: each category gets its own subtle tint */
+/* Band backgrounds: Tech (blue) → Strategy (ivory) → Ops (stone) → Industries (sage) */
 const bandStyles = [
-  { bg: '#f8f7f4', accent: '#e8e4db' },  /* Strategy: warm ivory */
-  { bg: '#f0f4f9', accent: '#d8e3f0' },  /* Technology: cool blue tint */
-  { bg: '#f5f4f2', accent: '#e4e1dc' },  /* Operations: warm stone */
-  { bg: '#f2f6f4', accent: '#d8e8e0' },  /* Industries: soft sage */
+  { bg: '#f0f4f9', border: '#2e74c0' },
+  { bg: '#f8f7f4', border: '#2d4770' },
+  { bg: '#f5f4f2', border: '#6b7a8d' },
+  { bg: '#f2f6f4', border: '#3a5a8c' },
 ];
 
 function ServiceCard({ service, categoryTitle }) {
@@ -102,9 +102,21 @@ function CategoryBand({ category, index }) {
     return () => obs.disconnect();
   }, []);
 
+  const style = bandStyles[index];
+
   return (
-    <section ref={ref} style={{ opacity: 0, width: '100%', backgroundColor: bandStyles[index].bg, padding: '5rem 0' }}>
-      <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 2rem' }}>
+    <section ref={ref} style={{ opacity: 0, width: '100%', position: 'relative', overflow: 'hidden', backgroundColor: style.bg, padding: '5rem 0' }}>
+      {/* Gradient accent bar at top */}
+      <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: '3px', background: `linear-gradient(90deg, transparent 10%, ${style.border}44 30%, ${style.border} 50%, ${style.border}44 70%, transparent 90%)` }} />
+
+      {/* Decorative corner circle */}
+      <div style={{ position: 'absolute', top: '-80px', right: '-80px', width: '260px', height: '260px', borderRadius: '50%', background: `radial-gradient(circle, ${style.border}08, transparent 70%)`, pointerEvents: 'none' }} />
+      <div style={{ position: 'absolute', bottom: '-60px', left: '-60px', width: '200px', height: '200px', borderRadius: '50%', background: `radial-gradient(circle, ${style.border}06, transparent 70%)`, pointerEvents: 'none' }} />
+
+      {/* Subtle dot pattern */}
+      <div style={{ position: 'absolute', inset: 0, opacity: 0.3, backgroundImage: `radial-gradient(${style.border}15 1px, transparent 1px)`, backgroundSize: '24px 24px', pointerEvents: 'none' }} />
+
+      <div style={{ position: 'relative', maxWidth: '1280px', margin: '0 auto', padding: '0 2rem' }}>
         <div style={{ textAlign: 'center', marginBottom: '3rem' }}>
           <div style={{ display: 'inline-flex', marginBottom: '1.25rem' }}>
             <div className={category.iconClass}>{category.icon}</div>

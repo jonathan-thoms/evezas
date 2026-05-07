@@ -1,6 +1,7 @@
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import Capabilities from './components/Capabilities';
+import Contact from './components/Contact';
 import Footer from './components/Footer';
 
 function App() {
@@ -10,6 +11,7 @@ function App() {
       <main>
         <Hero />
         <Capabilities />
+        <Contact />
       </main>
       <Footer />
     </div>

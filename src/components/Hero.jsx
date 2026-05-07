@@ -122,7 +122,7 @@ export default function Hero() {
           position: 'absolute',
           bottom: 0, left: 0, right: 0,
           height: '160px',
-          background: 'linear-gradient(to top, #ffffff, transparent)',
+          background: 'linear-gradient(to top, #ffffffff, transparent)',
         }}
       />
 

@@ -1,7 +1,6 @@
 const quickLinks = [
   { label: 'Home', href: '#home' },
   { label: 'Capabilities', href: '#capabilities' },
-  { label: 'Industries', href: '#industries' },
   { label: 'Contact', href: '#contact' },
 ];
 
@@ -17,7 +16,6 @@ export default function Footer() {
 
   return (
     <footer
-      id="contact"
       style={{
         position: 'relative',
         backgroundColor: '#060e18',

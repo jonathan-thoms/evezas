@@ -3,7 +3,6 @@ import { useState, useEffect } from 'react';
 const navLinks = [
   { label: 'Home', href: '#home' },
   { label: 'Capabilities', href: '#capabilities' },
-  { label: 'Industries', href: '#industries' },
   { label: 'Contact', href: '#contact' },
 ];
 
@@ -30,9 +29,9 @@ export default function Navbar() {
         top: 0, left: 0, right: 0,
         zIndex: 50,
         transition: 'all 0.35s cubic-bezier(0.4,0,0.2,1)',
-        backgroundColor: scrolled ? 'rgba(255,255,255,0.97)' : 'transparent',
-        backdropFilter: scrolled ? 'blur(12px)' : 'none',
-        boxShadow: scrolled ? '0 4px 30px rgba(11,25,41,0.08)' : 'none',
+        backgroundColor: 'rgba(255,255,255,0.97)',
+        backdropFilter: 'blur(12px)',
+        boxShadow: '0 4px 30px rgba(11,25,41,0.08)',
       }}
     >
       <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 2rem' }}>
@@ -60,15 +59,15 @@ export default function Navbar() {
                   borderRadius: '0.5rem',
                   textDecoration: 'none',
                   transition: 'all 0.2s',
-                  color: scrolled ? '#1e3354' : 'rgba(255,255,255,0.9)',
+                  color: '#1e3354',
                 }}
                 onMouseEnter={(e) => {
-                  e.target.style.backgroundColor = scrolled ? '#eef2f7' : 'rgba(255,255,255,0.1)';
-                  e.target.style.color = scrolled ? '#0b1929' : '#ffffff';
+                  e.target.style.backgroundColor = '#eef2f7';
+                  e.target.style.color = '#0b1929';
                 }}
                 onMouseLeave={(e) => {
                   e.target.style.backgroundColor = 'transparent';
-                  e.target.style.color = scrolled ? '#1e3354' : 'rgba(255,255,255,0.9)';
+                  e.target.style.color = '#1e3354';
                 }}
               >
                 {link.label}
@@ -77,7 +76,7 @@ export default function Navbar() {
             <a
               href="#contact"
               id="nav-cta"
-              className={scrolled ? 'btn-nav btn-nav--solid' : 'btn-nav btn-nav--light'}
+              className="btn-nav btn-nav--solid"
               style={{ marginLeft: '1rem' }}
             >
               Get in Touch
@@ -104,7 +103,7 @@ export default function Navbar() {
                     display: 'block',
                     width: '22px', height: '2px',
                     borderRadius: '2px',
-                    backgroundColor: scrolled ? '#132340' : '#ffffff',
+                    backgroundColor: '#132340',
                     transition: 'all 0.3s',
                     transform: mobileOpen
                       ? i === 0 ? 'rotate(45deg) translateY(7px)' : i === 2 ? 'rotate(-45deg) translateY(-7px)' : 'scaleX(0)'
