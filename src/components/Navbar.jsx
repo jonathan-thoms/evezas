@@ -22,63 +22,26 @@ export default function Navbar() {
   }, [mobileOpen]);
 
   return (
-    <nav
-      id="main-nav"
-      style={{
-        position: 'fixed',
-        top: 0, left: 0, right: 0,
-        zIndex: 50,
-        transition: 'all 0.35s cubic-bezier(0.4,0,0.2,1)',
-        backgroundColor: 'rgba(255,255,255,0.97)',
-        backdropFilter: 'blur(12px)',
-        boxShadow: '0 4px 30px rgba(11,25,41,0.08)',
-      }}
-    >
-      <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 2rem' }}>
-        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', height: '80px' }}>
+    <nav id="main-nav" className="navbar">
+      <div className="container">
+        <div className="navbar__inner">
           {/* Logo */}
-          <a href="#home" id="nav-logo" style={{ display: 'flex', alignItems: 'center', textDecoration: 'none' }}>
+          <a href="#home" id="nav-logo" className="navbar__logo">
             <img
               src={`${import.meta.env.BASE_URL}logo.png`}
               alt="Evezas"
-              style={{ height: '96px', width: 'auto', objectFit: 'contain' }}
+              className="navbar__logo-img"
             />
           </a>
 
           {/* Desktop Links */}
-          <div className="hidden md:flex" style={{ alignItems: 'center', gap: '4px' }} id="nav-links-desktop">
+          <div className="navbar__links" id="nav-links-desktop">
             {navLinks.map((link) => (
-              <a
-                key={link.label}
-                href={link.href}
-                style={{
-                  padding: '0.625rem 1.25rem',
-                  fontSize: '0.9rem',
-                  fontWeight: 500,
-                  letterSpacing: '0.015em',
-                  borderRadius: '0.5rem',
-                  textDecoration: 'none',
-                  transition: 'all 0.2s',
-                  color: '#1e3354',
-                }}
-                onMouseEnter={(e) => {
-                  e.target.style.backgroundColor = '#eef2f7';
-                  e.target.style.color = '#0b1929';
-                }}
-                onMouseLeave={(e) => {
-                  e.target.style.backgroundColor = 'transparent';
-                  e.target.style.color = '#1e3354';
-                }}
-              >
+              <a key={link.label} href={link.href} className="navbar__link">
                 {link.label}
               </a>
             ))}
-            <a
-              href="#contact"
-              id="nav-cta"
-              className="btn-nav btn-nav--solid"
-              style={{ marginLeft: '1rem' }}
-            >
+            <a href="#contact" id="nav-cta" className="btn btn--nav btn--nav-solid navbar__cta">
               Get in Touch
             </a>
           </div>
@@ -87,24 +50,15 @@ export default function Navbar() {
           <button
             id="nav-mobile-toggle"
             onClick={() => setMobileOpen(!mobileOpen)}
-            className="md:hidden flex items-center justify-center"
-            style={{
-              width: '44px', height: '44px',
-              borderRadius: '0.5rem',
-              background: 'none', border: 'none', cursor: 'pointer',
-            }}
+            className="navbar__hamburger"
             aria-label="Toggle menu"
           >
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '5px' }}>
+            <div className="navbar__hamburger-lines">
               {[0, 1, 2].map((i) => (
                 <span
                   key={i}
+                  className="navbar__hamburger-line"
                   style={{
-                    display: 'block',
-                    width: '22px', height: '2px',
-                    borderRadius: '2px',
-                    backgroundColor: '#132340',
-                    transition: 'all 0.3s',
                     transform: mobileOpen
                       ? i === 0 ? 'rotate(45deg) translateY(7px)' : i === 2 ? 'rotate(-45deg) translateY(-7px)' : 'scaleX(0)'
                       : 'none',
@@ -118,42 +72,28 @@ export default function Navbar() {
       </div>
 
       {/* Mobile Overlay */}
-      {mobileOpen && (
-        <div
-          className="md:hidden"
-          id="nav-mobile-menu"
-          style={{
-            position: 'fixed', inset: 0, top: '80px',
-            backgroundColor: 'rgba(255,255,255,0.98)',
-            backdropFilter: 'blur(20px)',
-            display: 'flex', flexDirection: 'column', alignItems: 'center',
-            paddingTop: '3rem', gap: '0.5rem',
-          }}
-        >
-          {navLinks.map((link) => (
-            <a
-              key={link.label}
-              href={link.href}
-              onClick={() => setMobileOpen(false)}
-              style={{
-                fontSize: '1.125rem', fontWeight: 500, color: '#132340',
-                padding: '0.875rem 2rem', borderRadius: '0.75rem',
-                textDecoration: 'none', width: '80%', maxWidth: '320px', textAlign: 'center',
-              }}
-            >
-              {link.label}
-            </a>
-          ))}
+      <div
+        className={`navbar__mobile-menu${mobileOpen ? ' is-open' : ''}`}
+        id="nav-mobile-menu"
+      >
+        {navLinks.map((link) => (
           <a
-            href="#contact"
+            key={link.label}
+            href={link.href}
             onClick={() => setMobileOpen(false)}
-            className="btn-nav btn-nav--solid"
-            style={{ marginTop: '1rem', width: '80%', maxWidth: '320px', justifyContent: 'center' }}
+            className="navbar__mobile-link"
           >
-            Get in Touch
+            {link.label}
           </a>
-        </div>
-      )}
+        ))}
+        <a
+          href="#contact"
+          onClick={() => setMobileOpen(false)}
+          className="btn btn--nav btn--nav-solid navbar__mobile-cta"
+        >
+          Get in Touch
+        </a>
+      </div>
     </nav>
   );
 }

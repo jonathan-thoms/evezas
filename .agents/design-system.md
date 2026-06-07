@@ -7,7 +7,15 @@
 ## Services Categorization (CRITICAL)
 When generating the capabilities section, NEVER render a flat list. You must group the client's 14 services into the following categorized CSS Grid layout using clean, white cards with subtle drop shadows:
 
-**1. Strategy & Advisory**
+**1. Technology & Innovation**
+- IT & Digital Transformation Services
+- Engineering Solutions & Technology Development 
+- AI, Automation & Data Enablement
+- Cybersecurity & Risk Management
+- Emerging & Niche Technology Services (Blockchain, IoT, Fractional CXO, etc.)
+
+
+**2. Strategy & Advisory**
 - Strategy & Management Advisory
 - ESG & Sustainability Advisory
 - Financial & Investment Services
