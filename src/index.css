@@ -471,6 +471,12 @@ ul {
   .navbar {
     z-index: 1000;
   }
+  .navbar__inner {
+    height: 56px;
+  }
+  .navbar__logo-img {
+    height: 60px;
+  }
   .hero {
     min-height: auto;
   }
@@ -479,7 +485,7 @@ ul {
     min-height: auto;
   }
   .hero__content {
-    padding: 5.5rem 0 7rem;
+    padding: 5rem 0 9rem;
     text-align: center;
     align-items: center;
     gap: 1.25rem;
