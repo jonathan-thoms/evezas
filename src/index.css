@@ -479,7 +479,7 @@ ul {
     min-height: auto;
   }
   .hero__content {
-    padding: 5.5rem 0 2.5rem;
+    padding: 5.5rem 0 7rem;
     text-align: center;
     align-items: center;
     gap: 1.25rem;
@@ -511,14 +511,15 @@ ul {
     padding: 1.5rem 0;
   }
   .hero__stats-grid {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 1rem;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0.5rem;
+    padding: 1rem 0;
   }
-  .hero__stat-number {
-    font-size: 1.5rem;
+  .hero__stat-value {
+    font-size: 1.25rem;
   }
   .hero__stat-label {
-    font-size: 0.7rem;
+    font-size: 0.6rem;
   }
   .hero__stat + .hero__stat::before {
     display: none;
