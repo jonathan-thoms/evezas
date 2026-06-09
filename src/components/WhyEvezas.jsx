@@ -24,12 +24,6 @@ export default function WhyEvezas() {
             <p className="feature-block__text">
               From Fortune 500 boardrooms to high-growth startups navigating scale, our teams embed alongside yours to accelerate transformation at every level.
             </p>
-            <a href="#capabilities" className="btn btn--navy">
-              Explore Our Approach
-              <svg width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                <path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
-              </svg>
-            </a>
           </div>
         </div>
       </div>
@@ -57,7 +51,7 @@ export default function WhyEvezas() {
             <p className="feature-block__text">
               Whether you need a fractional CXO to steer a critical initiative, an AI strategy to unlock data-driven growth, or a full-scale digital transformation — we have the depth and the drive.
             </p>
-            <a href="#contact" className="btn btn--navy">
+            <a href="#contact" className="btn btn--navy" style={{ marginTop: '1.5rem' }}>
               Start a Conversation
               <svg width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                 <path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
