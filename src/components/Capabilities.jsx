@@ -80,7 +80,7 @@ function AccordionPanel({ category, index, isOpen, onToggle }) {
 }
 
 export default function Capabilities() {
-  const [openIndex, setOpenIndex] = useState(0);
+  const [openIndex, setOpenIndex] = useState(-1);
 
   return (
     <div id="capabilities">
